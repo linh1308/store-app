@@ -1,0 +1,60 @@
+@use "../../scss/" as *;
+
+.product {
+    margin: 6rem 0;
+
+    .product-detail {
+        @include flex(center, flex-start);
+        gap: 4rem;
+
+        &__image {
+            width: 100%;
+            text-align: center;
+            & > img {
+                max-width: 40rem;
+
+                @include w720 {
+                    max-width: 30rem;
+                }
+            }
+        }
+
+        &__content {
+            width: 95%;
+
+            .category {
+                font-size: 3rem;
+                font-weight: 600;
+                color: $gray-color;
+                text-transform: capitalize;
+            }
+
+            .title {
+                font-size: 4rem;
+                font-weight: 500;
+                margin: 1rem 0 2rem;
+            }
+
+            .desc {
+                font-size: 2.5rem;
+                font-weight: 400;
+                margin-bottom: 1rem;
+            }
+
+            .rating {
+                font-size: 2rem;
+                font-weight: 700;
+            }
+
+            .price {
+                font-size: 3rem;
+                font-weight: 400;
+                margin: 2rem 0;
+            }
+        }
+
+        @include w720 {
+            flex-direction: column;
+        }
+    }
+}

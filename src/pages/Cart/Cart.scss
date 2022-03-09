@@ -1,0 +1,78 @@
+@use '../../scss/' as *;
+
+.cart {
+    margin-top: 5rem;
+    &-title {
+        font-size: 3rem;
+        font-weight: 600;
+        margin-bottom: 3rem;
+    }
+
+    &-list {
+        .cart-item {
+            @include flex(flex-start, center);
+            gap: 5rem;
+            position: relative;
+
+            width: 100%;
+            border: 1px solid $black-color;
+            
+            padding: 2rem;
+            margin-bottom: 3rem;
+
+            &__image {
+                margin-left: 3rem;
+                & > img {
+                    max-width: 15rem;
+                    height: 15rem;
+                }
+            }
+
+            &__content {
+                .title {
+                    font-size: 2.5rem;
+                    font-weight: 500;
+                    overflow: hidden;
+
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                }
+
+                .price {
+                    font-size: 2rem;
+                    font-weight: 400;
+                    margin: 0.5rem 0 1rem;
+                }
+
+                .quantity {
+                    @include flex(flex-start, center);
+                    gap: 2rem;
+                    font-size: 2rem;
+
+                    .icon {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .remove {
+                position: absolute;
+                top: 0;
+                right: 0;
+
+                margin: 1rem;
+                font-size: 2rem;
+                cursor: pointer;
+            }
+        }
+    }
+
+    &-purchase {
+        .total {
+            font-size: 3rem;
+            font-weight: 600;
+        }
+    }
+}

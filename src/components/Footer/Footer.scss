@@ -1,0 +1,82 @@
+@use "../../scss/" as *;
+
+.footer {
+    background-color: $black-color;
+    margin: 4rem 0 2rem;
+    color: $primary-color;
+
+    &-content {
+        @include flex(space-between, center);
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+        .footer__title {
+            font-size: 3.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .footer-menu {
+            @include flex(center, flex-start);
+            gap: 6rem;
+
+            &__item {
+                text-transform: capitalize;
+                & > h3 {
+                    font-size: 2.5rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                }
+
+                & > ul {
+                    font-size: 1.5rem;
+                    li {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            @include w720 {
+                flex-direction: column;
+                margin: 2rem 0;
+                text-align: center
+            }
+        }
+
+        .footer-socials {
+            @include flex(center, center);
+            gap: 2rem;
+            &__icon {
+                font-size: 2rem;
+                cursor: pointer;
+            }
+
+            @include w720 {
+                margin-top: 2rem;
+            }
+        }
+
+        @include w720 {
+            flex-direction: column
+        }
+    }
+
+    &-sub {
+        @include flex(space-between, center);
+        padding-bottom: 1.5rem;
+
+        &__copyright {
+            font-size: 1.2rem;
+        }
+
+        &__terms {
+            @include flex(center, center);
+            gap: 2rem;
+            font-size: 1.2rem;
+
+            text-transform: capitalize;
+            .terms, .policy {
+                cursor: pointer;
+            }
+        }
+    }
+}

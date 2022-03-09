@@ -1,0 +1,27 @@
+@use "../../scss/" as *;
+
+.btn {
+    background: none;
+    border: 1px solid $black-color;
+    padding: 0.7rem 1.5rem;
+
+    border-radius: 0.3rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    &--flex {
+        @include flex(center, center);
+        gap: 0.5rem;
+    }
+
+    &:hover {
+        background-color: $black-color;
+        color: $primary-color;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &--regular {
+        font-weight: 400;
+        border-color: $gray-color;
+    }
+}

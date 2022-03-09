@@ -1,0 +1,43 @@
+@use '../../scss/' as *;
+
+.contact {
+    margin: 3rem 0;
+    .col {
+        @include flex(center, center);
+        gap: 10rem;
+
+        .contact__title {
+            font-size: 3rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 1.7rem;
+        }
+    
+        .contact__address {
+            & > h3 {
+                font-size: 2rem;
+                font-weight: 600;
+                margin-bottom: 1.2rem;
+            }
+    
+            & > p {
+                font-size: 1.5rem;
+                margin-top: 1.2rem;
+            }
+        }
+
+        .map {
+            width: 60rem;
+            height: 45rem;
+
+            @include w1024 {
+                width: 30rem;
+                height: 25rem;
+            }
+
+            @include w720 {
+                display: none;
+            }
+        }
+    }
+}
