@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { BsFillPersonPlusFill } from 'react-icons/bs';
+import { FaHome } from 'react-icons/fa';
+import { SiAboutdotme } from 'react-icons/si';
 import { FiLogIn, FiShoppingCart } from 'react-icons/fi';
-import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
+import { MdOutlineContactPage, MdOutlineProductionQuantityLimits } from 'react-icons/md';
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import Button from '../Button';
@@ -29,41 +31,49 @@ const navList = [
 const Header = () => {
     const { pathname } = useLocation();
     const active = navList.findIndex(item => item.path === pathname);
-    const navRef = useRef(null);
+    const headerRef = useRef(null);
     const productInCart = useSelector(state => state.products);
 
     const renderNav = navList.map((item, index) => {
         return (
-            <li key={index} onClick={() => navRef.current.classList.remove('active')} className={`${index === active ? 'navbar__item active' : 'navbar__item'}`}>
+            <li key={index} className={`${index === active ? 'navbar__item active' : 'navbar__item'}`}>
                 <Link to={item.path}>{item.name}</Link>
             </li>
         )
     });
 
     useEffect(() => {
-        const handleDropdownClick = () => {
-            if (!navRef.current.classList.contains('active')) {
-                navRef.current.classList.add('active');
+        const headerScroll = () => {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                headerRef.current.classList.add('active');
             } else {
-                navRef.current.classList.remove('active');
+                headerRef.current.classList.remove('active');
             }
-        };
+        }
 
-        document.querySelector('.dropdown').addEventListener('click', handleDropdownClick);
+        window.addEventListener('scroll', headerScroll);
 
         return () => {
-            document.querySelector('.dropdown').removeEventListener('click', handleDropdownClick);
+            window.removeEventListener('scroll', headerScroll)
         }
     }, [])
+
 
     return (
         <div className="header">
             <div className="container">
                 <div className="header__content">
-                    <ul className='navbar' ref={navRef}>
+                    <ul className='navbar'>
                         {renderNav}
                     </ul>
-                    <MdOutlineKeyboardArrowDown className='dropdown' />
+
+                    <ul className='navbar__icons' ref={headerRef}>
+                        <Link to='/'><FaHome /></Link>
+                        <Link to='/products'><MdOutlineProductionQuantityLimits /></Link>
+                        <Link to='/about'><SiAboutdotme /></Link>
+                        <Link to='/contact'><MdOutlineContactPage /></Link>
+                    </ul>
+
                     <div className="header__title"><Link to='/'>STORE</Link></div>
                     <div className="btns">
                         <Button className='btn--flex'><FiLogIn /><p>Log in</p></Button>

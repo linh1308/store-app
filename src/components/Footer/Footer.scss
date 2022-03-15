@@ -38,7 +38,8 @@
             @include w720 {
                 flex-direction: column;
                 margin: 2rem 0;
-                text-align: center
+                text-align: center;
+                align-items: center;
             }
         }
 
